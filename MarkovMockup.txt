@@ -39,7 +39,7 @@ Extra considerations:
 If somones name is used, then force them to be the respoder?
 Multiword chain?
 Cater for punctuation?
-Markov image?? 2d markov?
+Markov image?? 2d markov? If i can do this then cater responses to Images?
 */
 
 
