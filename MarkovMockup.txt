@@ -1,0 +1,93 @@
+MarkovChain ResponseChain;
+Map<Name, MarkovChain> Sequence;
+
+string prevWriter;
+For(Message: mesages)
+{
+	string writer = message.Person
+	if(prevWriter != null)
+	{
+		ResponseChain.Add(prevWriter, writer);
+	}
+	prevWriter = writer;
+	
+	MarkovChain WritersChain = Sequence.get(writer);
+	
+	string prevWord;
+	
+	For(string[] sentances: message.Split(".","!","?"))
+	{
+		For(string word: sentances.Split" ")
+		{
+			if(prevWriter != null)
+			{
+				WritersChain.Add(prevWord, word)
+			}
+			else
+			{
+				//Contribute First
+			}
+			prevWord = word;
+		}
+		//Contribute last
+	}
+}
+
+
+/*
+Extra considerations:
+If somones name is used, then force them to be the respoder?
+Multiword chain?
+Cater for punctuation?
+Markov image?? 2d markov?
+*/
+
+
+MarkovChain
+
+Map<string, Map<string, int>> Chain;
+
+public MarkovChain()
+{
+	Chain = new Map<string, Map<string, int>>();
+}
+
+public void Add(string first, string second)
+{
+    InnerMap = Chain.get(first);
+	if(InnerMap == null)
+	{
+		InnerMap = new Map<string, int>();
+		InnerMap.Put(second, 0);
+		Chain.Put(first, InnerMap)
+	}
+	int weight = InnerMap.get(second);
+	
+	InnerMap.put(second, weight+1);
+}
+
+public string GetNext(string current)
+{
+	Map<string, int> weightedMap Chain.Get(current);
+	
+	int totalWeight = 0;
+	
+	for(int weight: weightedMap)
+	{
+		totalWeight += weight;
+	}
+	
+	string next;
+	for(key val:weightedMap)
+	{
+		if(val in totalWeight chance)
+		{
+			next = key;
+			break;
+		}
+		
+		totalWeight -= val;
+		
+	}
+	return next;
+}
