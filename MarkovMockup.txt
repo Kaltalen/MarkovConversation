@@ -33,7 +33,6 @@ For(Message: mesages)
 	}
 }
 
-
 /*
 Extra considerations:
 If somones name is used, then force them to be the respoder?
@@ -41,53 +40,3 @@ Multiword chain?
 Cater for punctuation?
 Markov image?? 2d markov? If i can do this then cater responses to Images?
 */
-
-
-MarkovChain
-
-Map<string, Map<string, int>> Chain;
-
-public MarkovChain()
-{
-	Chain = new Map<string, Map<string, int>>();
-}
-
-public void Add(string first, string second)
-{
-    InnerMap = Chain.get(first);
-	if(InnerMap == null)
-	{
-		InnerMap = new Map<string, int>();
-		InnerMap.Put(second, 0);
-		Chain.Put(first, InnerMap)
-	}
-	int weight = InnerMap.get(second);
-	
-	InnerMap.put(second, weight+1);
-}
-
-public string GetNext(string current)
-{
-	Map<string, int> weightedMap Chain.Get(current);
-	
-	int totalWeight = 0;
-	
-	for(int weight: weightedMap)
-	{
-		totalWeight += weight;
-	}
-	
-	string next;
-	for(key val:weightedMap)
-	{
-		if(val in totalWeight chance)
-		{
-			next = key;
-			break;
-		}
-		
-		totalWeight -= val;
-		
-	}
-	return next;
-}
